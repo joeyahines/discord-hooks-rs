@@ -21,29 +21,29 @@ impl DiscordWebhook {
         }
     }
 
-    fn content(mut self, content: &str) -> Self {
+    pub fn content(mut self, content: &str) -> Self {
         self.content = Some(content.to_string());
 
         self
     }
 
-    fn username(mut self, username: &str) -> Self {
+    pub fn username(mut self, username: &str) -> Self {
         self.username = Some(username.to_string());
 
         self
     }
 
-    fn avatar_url(mut self, avatar_url: &str) -> Self {
+    pub fn avatar_url(mut self, avatar_url: &str) -> Self {
         self.avatar_url = Some(avatar_url.to_string());
         self
     }
 
-    fn tts(mut self, tts: bool) -> Self {
+    pub fn tts(mut self, tts: bool) -> Self {
         self.tts = Some(tts);
         self
     }
 
-    fn embed<F>(mut self, f: F) -> Self
+    pub fn embed<F>(mut self, f: F) -> Self
     where
         F: FnOnce(&mut Embed),
     {
@@ -103,37 +103,37 @@ impl Embed {
         }
     }
 
-    fn title(&mut self, title: &str) -> &mut Self {
+    pub fn title(&mut self, title: &str) -> &mut Self {
         self.title = Some(title.to_string());
         self
     }
 
-    fn embed_type(&mut self, embed_type: &str) -> &mut Self {
+    pub fn embed_type(&mut self, embed_type: &str) -> &mut Self {
         self.embed_type = Some(embed_type.to_string());
         self
     }
 
-    fn description(&mut self, description: &str) -> &mut Self {
+    pub fn description(&mut self, description: &str) -> &mut Self {
         self.description = Some(description.to_string());
         self
     }
 
-    fn url(&mut self, url: &str) -> &mut Self {
+    pub fn url(&mut self, url: &str) -> &mut Self {
         self.url = Some(url.to_string());
         self
     }
 
-    fn timestamp(&mut self, timestamp: &str) -> &mut Self {
+    pub fn timestamp(&mut self, timestamp: &str) -> &mut Self {
         self.timestamp = Some(timestamp.to_string());
         self
     }
 
-    fn color(&mut self, color: u32) -> &mut Self {
+    pub fn color(&mut self, color: u32) -> &mut Self {
         self.color = Some(color);
         self
     }
 
-    fn footer<F>(&mut self, f: F) -> &mut Self
+    pub fn footer<F>(&mut self, f: F) -> &mut Self
     where
         F: FnOnce(&mut EmbedFooter),
     {
@@ -146,7 +146,7 @@ impl Embed {
         self
     }
 
-    fn image<F>(&mut self, f: F) -> &mut Self
+    pub fn image<F>(&mut self, f: F) -> &mut Self
     where
         F: FnOnce(&mut EmbedImage),
     {
@@ -159,7 +159,7 @@ impl Embed {
         self
     }
 
-    fn thumbnail<F>(&mut self, f: F) -> &mut Self
+    pub fn thumbnail<F>(&mut self, f: F) -> &mut Self
     where
         F: FnOnce(&mut EmbedImage),
     {
@@ -172,7 +172,7 @@ impl Embed {
         self
     }
 
-    fn video<F>(&mut self, f: F) -> &mut Self
+    pub fn video<F>(&mut self, f: F) -> &mut Self
     where
         F: FnOnce(&mut EmbedVideo),
     {
@@ -185,7 +185,7 @@ impl Embed {
         self
     }
 
-    fn provider<F>(&mut self, f: F) -> &mut Self
+    pub fn provider<F>(&mut self, f: F) -> &mut Self
     where
         F: FnOnce(&mut EmbedProvider),
     {
@@ -198,7 +198,7 @@ impl Embed {
         self
     }
 
-    fn author<F>(&mut self, f: F) -> &mut Self
+    pub fn author<F>(&mut self, f: F) -> &mut Self
     where
         F: FnOnce(&mut EmbedAuthor),
     {
@@ -211,7 +211,7 @@ impl Embed {
         self
     }
 
-    fn field(&mut self, name: &str, value: &str, inline: bool) -> &mut Self {
+    pub fn field(&mut self, name: &str, value: &str, inline: bool) -> &mut Self {
         if self.fields.is_none() {
             self.fields = Some(Vec::<EmbedField>::new());
         }
@@ -235,7 +235,7 @@ pub struct EmbedImage {
 }
 
 impl EmbedImage {
-    fn new() -> Self {
+    pub fn new() -> Self {
         EmbedImage {
             url: None,
             proxy_url: None,
@@ -244,17 +244,17 @@ impl EmbedImage {
         }
     }
 
-    fn url(&mut self, url: &str) -> &mut Self {
+    pub fn url(&mut self, url: &str) -> &mut Self {
         self.url = Some(url.to_string());
         self
     }
 
-    fn proxy_url(&mut self, proxy_url: &str) -> &mut Self {
+    pub fn proxy_url(&mut self, proxy_url: &str) -> &mut Self {
         self.proxy_url = Some(proxy_url.to_string());
         self
     }
 
-    fn size(&mut self, width: u32, height: u32) -> &mut Self {
+    pub fn size(&mut self, width: u32, height: u32) -> &mut Self {
         self.width = Some(width);
         self.height = Some(height);
 
@@ -277,7 +277,7 @@ pub struct EmbedFooter {
 }
 
 impl EmbedFooter {
-    fn new() -> EmbedFooter {
+    pub fn new() -> EmbedFooter {
         EmbedFooter {
             text: "".to_string(),
             icon_url: None,
@@ -285,19 +285,19 @@ impl EmbedFooter {
         }
     }
 
-    fn text(&mut self, text: &str) -> &mut EmbedFooter {
+    pub fn text(&mut self, text: &str) -> &mut EmbedFooter {
         self.text = text.to_string();
 
         self
     }
 
-    fn icon_url(&mut self, icon_url: &str) -> &mut EmbedFooter {
+    pub fn icon_url(&mut self, icon_url: &str) -> &mut EmbedFooter {
         self.icon_url = Some(icon_url.to_string());
 
         self
     }
 
-    fn proxy_icon_url(&mut self, proxy_icon_url: &str) -> &mut EmbedFooter {
+    pub fn proxy_icon_url(&mut self, proxy_icon_url: &str) -> &mut EmbedFooter {
         self.proxy_icon_url = Some(proxy_icon_url.to_string());
 
         self
@@ -311,19 +311,19 @@ pub struct EmbedProvider {
 }
 
 impl EmbedProvider {
-    fn new() -> Self {
+    pub fn new() -> Self {
         EmbedProvider {
             name: None,
             url: None,
         }
     }
 
-    fn name(&mut self, name: &str) -> &mut EmbedProvider {
+    pub fn name(&mut self, name: &str) -> &mut EmbedProvider {
         self.name = Some(name.to_string());
         self
     }
 
-    fn url(&mut self, url: &str) -> &mut EmbedProvider {
+    pub fn url(&mut self, url: &str) -> &mut EmbedProvider {
         self.url = Some(url.to_string());
         self
     }
@@ -338,7 +338,7 @@ pub struct EmbedAuthor {
 }
 
 impl EmbedAuthor {
-    fn new() -> Self {
+    pub fn new() -> Self {
         EmbedAuthor {
             name: None,
             url: None,
@@ -347,22 +347,22 @@ impl EmbedAuthor {
         }
     }
 
-    fn name(&mut self, name: &str) -> &mut Self {
+    pub fn name(&mut self, name: &str) -> &mut Self {
         self.name = Some(name.to_string());
         self
     }
 
-    fn url(&mut self, url: &str) -> &mut Self {
+    pub fn url(&mut self, url: &str) -> &mut Self {
         self.url = Some(url.to_string());
         self
     }
 
-    fn icon_url(&mut self, icon_url: &str) -> &mut Self {
+    pub fn icon_url(&mut self, icon_url: &str) -> &mut Self {
         self.icon_url = Some(icon_url.to_string());
         self
     }
 
-    fn proxy_icon_url(&mut self, proxy_icon_url: &str) -> &mut Self {
+    pub fn proxy_icon_url(&mut self, proxy_icon_url: &str) -> &mut Self {
         self.proxy_icon_url = Some(proxy_icon_url.to_string());
         self
     }
@@ -376,7 +376,7 @@ pub struct EmbedVideo {
 }
 
 impl EmbedVideo {
-    fn new() -> Self {
+    pub fn new() -> Self {
         EmbedVideo {
             url: None,
             height: None,
@@ -384,12 +384,12 @@ impl EmbedVideo {
         }
     }
 
-    fn url(&mut self, url: &str) -> &mut Self {
+    pub fn url(&mut self, url: &str) -> &mut Self {
         self.url = Some(url.to_string());
         self
     }
 
-    fn size(&mut self, width: u32, height: u32) -> &mut Self {
+    pub fn size(&mut self, width: u32, height: u32) -> &mut Self {
         self.width = Some(width);
         self.height = Some(height);
 
