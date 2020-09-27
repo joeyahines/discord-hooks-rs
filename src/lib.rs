@@ -11,7 +11,7 @@ pub struct DiscordWebhook {
 }
 
 impl DiscordWebhook {
-    fn new() -> Self {
+    pub fn new() -> Self {
         DiscordWebhook {
             content: None,
             username: None,
@@ -85,7 +85,7 @@ pub struct Embed {
 }
 
 impl Embed {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Embed {
             title: None,
             embed_type: None,
